@@ -10,40 +10,34 @@ const express = require('express'),
         null,
         keys.private_key,
         ['https://www.googleapis.com/auth/spreadsheets'],
-       );
-
+       ),
+      swig  = require('swig'),
+      template = swig.compileFile('form/index.html');
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/form');
 app.use(bodyparser.json());
 app.use(express.urlencoded());
 app.use(express.json());
+app.use('/css',express.static(__dirname +'/form/css'));
+app.use('/js',express.static(__dirname +'/form/js'));
+app.use('/images',express.static(__dirname +'/form/images'));
+app.use('/webfonts',express.static(__dirname +'/form/webfonts'));
+app.use('/fonts',express.static(__dirname +'/form/fonts'));
 
-var mysqlConnection;
+var mysqlConnection = mysql.createConnection({
+  host:'localhost',
+  user: 'root',
+  password: '',
+  database: 'ieee'
+});
 
-function handleDisconnect() {
-        mysqlConnection = mysql.createConnection({
-        host:'localhost',
-        user: 'root',
-        password: '',
-        database: 'ieee'
-    });
-
-    mysqlConnection.connect(function(err) {
-        if(err) {
-            console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,4));
-            setTimeout(handleDisconnect, 2000);
-        } else
-            console.log('DB Connection Succeded');
-    });
-    mysqlConnection.on('error', function(err) {
-        console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,4));
-        if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw err;
-        }
-    });
-}
-
-handleDisconnect();
+mysqlConnection.connect((err)=>{
+  if(!err)
+  console.log('DB Connection Succeded');
+  else
+  console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,2));
+});
 
 client.authorize(function(err, tokens) {
   if(err) {
@@ -59,9 +53,13 @@ const gsapi = google.sheets({
   auth: client
 });
  
-app.use('/', express.static('form'));
+// app.use('/', express.static('form'));
 
-app.post('/submit', function (req, res) {
+app.get('/', (req,res) => {
+    res.render('index');
+});
+
+app.post('/', function (req, res) {
     const SchemaValidation = {
       name: joi.string().min(4)
         .required()
@@ -131,19 +129,19 @@ app.post('/submit', function (req, res) {
     
     joi.validate(req.body,SchemaValidation,(err, result) => {
       if(err) {
-          res.send(`<p style='color:red; text-align:center; margin-top:20px;'>${err.details[0].message}</p>`);
+          res.render('index', {output: `<div class="alert alert-danger" role="alert">${err.details[0].message}</div>`});
           return; // don't try saving to db if the schema isnt valid
       }
       mysqlConnection.query('INSERT INTO `form` (`name`,`email`,`phone`,`university`,`faculty`,`academic_year`,`first_choice`,`second_choice`) VALUES ("'+req.body.name+'","'+req.body.email+'","'+req.body.phone+'","'+req.body.university+'","'+req.body.faculty+'","'+req.body.academicyear+'","'+req.body.first_choice+'","'+req.body.second_choice+'")', function(error, results, fields) {		
           if(error){
-            res.send(`<p style='color:red; text-align:center; margin-top:20px;'>Make sure you entered Correct Data</p>`);
+            res.render('index', {output: `<div class="alert alert-danger" role="alert">Make sure you entered Correct Data</div>`});
             return;
           }
           else
           {
             mysqlConnection.query(`SELECT id FROM form WHERE phone = '${req.body.phone}' LIMIT 1;`,(err,rows,fields) => {
                 if(err) {
-                  res.send(`<p style='color:red; text-align:center; margin-top:20px;'>Can't find User Id</p>`);
+                  res.render('index', {output: `<div class="alert alert-danger" role="alert">Can\'t find User Id</div>`});
                   return;
                 } else 
                 {
@@ -156,7 +154,7 @@ app.post('/submit', function (req, res) {
                       resource: { values: [dataArray]}
                   }
                   gsapi.spreadsheets.values.append(insertData);
-                  res.send(`<p style='color:green; text-align:center; margin-top:20px;'>Successfully Posted Data</p>`);
+                  res.render('success');
                 }
             });
           }

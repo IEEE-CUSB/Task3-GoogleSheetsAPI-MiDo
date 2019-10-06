@@ -2,11 +2,18 @@ $(document).ready(function() {
     var checkLen =0;
 
     // Centering the Form at the middle of screen
+    debugger;
     var formHeight = $('.form-main').parent().innerHeight(),
-        screenHeight = $('body').innerHeight() + 100;
+        screenHeight = $('body').innerHeight() + 100,
+        screenHeightwelc = $('body.success').innerHeight(),
+        jumbHeight = $('.jumbotron').parent().innerHeight();
     if(screenHeight > formHeight) {
         $('.form-main').parent().css('margin-top', (screenHeight-formHeight)/2);
         $('.form-main').parent().css('margin-bottom', (screenHeight-formHeight)/2);
+    }
+    if(screenHeight > jumbHeight) {
+        $('.jumbotron').parent().css('margin-top', (screenHeightwelc-jumbHeight)/2);
+        $('body.success').css('height', screenHeightwelc-(screenHeightwelc-jumbHeight)/2);
     }
 
     // Clear placeholder on focus - Border Effect

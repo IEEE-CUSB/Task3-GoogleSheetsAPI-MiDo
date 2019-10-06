@@ -53,8 +53,12 @@ button:focus {
     font-family:lato-regular;
 }
 
-body {
+body, body.success {
     background-image: linear-gradient(45deg,#00629b,#0083cf,#02a1fe);
+    background-repeat: no-repeat;
+}
+body.success {
+    height:100vh;
 }
 
 /****************   General End   *****************/

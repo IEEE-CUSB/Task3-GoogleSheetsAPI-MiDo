@@ -18,8 +18,11 @@
 <body>
 	<div class="container px-md-5">
         <div class="form-main p-4 rounded mx-md-5">
-            <form method='POST' action='/submit'>
+            <form method='POST'>
                 <fieldset>
+                        <div class="sub-output text-center">
+                            {{ output|raw }}
+                        </div>
                     <legend class="text-center">IEEE - Registeration form</legend>
                     <h6 class="mb-4 mt-4 position-relative">(<b style="color:red; top:4px;" class="position-relative">*</b>) For Required Fields</h6>
                     <div class="form-group position-relative">
