@@ -1,0 +1,209 @@
+/**************** COPYRIGHT ********************
+*       Design by MiDo aka Mohamed Salah       *
+*       Coded by MiDo aka Mohamed Salah        *
+*       Copyright 25 September 2019            *
+***********************************************/
+
+/****************   FONTS   *****************/
+@font-face {
+    font-family: lato-regular;
+    src:url(../fonts/Lato-Regular.ttf);
+}
+@font-face {
+    font-family: lato-bold;
+    src:url(../fonts/Lato-Bold.ttf);
+}
+@font-face {
+    font-family: lato-black;
+    src:url(../fonts/Lato-Black.ttf);
+}
+@font-face {
+    font-family: lato-light;
+    src:url(../fonts/Lato-Light.ttf);
+}
+/****************   FONTS END   *****************/
+
+/****************   My Framework   *****************/
+
+.h1 {
+    font-family:lato-black;
+}
+
+.p {
+    color:#687074;
+    width:70%;
+    margin:auto;
+    font-size:18px;
+    line-height: 1.8;
+}
+
+button {
+    outline:none;
+}
+
+button:focus {
+    outline:none;
+}
+
+/****************   My Framework End   *****************/
+
+/****************   General   *****************/
+
+* {
+    font-family:lato-regular;
+}
+
+body {
+    background-image: linear-gradient(45deg,#00629b,#0083cf,#02a1fe);
+}
+
+/****************   General End   *****************/
+
+/****************   Form Start      ***************/
+
+.form-main {
+    background:#EEE;
+    position:relative;
+    -webkit-box-shadow: -22px 19px 19px -3px rgba(0,0,0,.5);
+    -moz-box-shadow: -22px 19px 19px -3px rgba(0,0,0,.5);
+    box-shadow: -22px 19px 19px -3px rgba(0,0,0,.5);
+}
+
+.form-main:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 30px 30px 0;
+    border-style: solid;
+    border-color: #861F41 #0198EF;
+}
+
+input[placeholder] {
+    outline:0;
+    border:none;
+    background:inherit;
+    transition:all .5s ease-in-out;
+}
+
+.effect {
+    height:3px;
+    background:transparent;
+}
+
+input[placeholder]:focus {
+    outline: 0!important;
+    box-shadow: none;
+    background:rgba(255,255,255,0.5);
+}
+
+.radio {
+    margin: 16px 0;
+    display: block;
+    cursor: pointer;
+}
+.radio input {
+    display: none;
+}
+.radio input + span {
+    line-height: 22px;
+    height: 22px;
+    padding-left: 22px;
+    display: block;
+    position: relative;
+}
+.radio input + span:not(:empty) {
+    padding-left: 30px;
+}
+.radio input + span:before, .radio input + span:after {
+    content: '';
+    width: 22px;
+    height: 22px;
+    display: block;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.radio input + span:before {
+    background: #D1D7E3;
+    transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+}
+.radio input + span:after {
+    background: #fff;
+    transform: scale(0.78);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+.radio input:checked + span:before {
+    transform: scale(1.04);
+    background: #5D9BFB;
+}
+.radio input:checked + span:after {
+    transform: scale(0.4);
+    transition: transform .3s ease;
+}
+.radio:hover input + span:before {
+    -webkit-transform: scale(0.92);
+    transform: scale(0.92);
+}
+.radio:hover input + span:after {;
+    transform: scale(0.74);
+}
+.radio:hover input:checked + span:after {
+    transform: scale(0.4);
+}
+
+.nopad {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/*image gallery*/
+.image-checkbox {
+    cursor: pointer!important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 4px solid transparent;
+    margin-bottom: 0;
+    outline: 0;
+}
+
+.sections .inner-checkbox {
+    cursor:pointer;
+}
+
+.img-responsive {
+    max-width:100%;
+}
+.image-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.image-checkbox-checked {
+    border-color: #4783B0;
+}
+.image-checkbox .fa {
+    position: absolute;
+    color: #4A79A3;
+    background-color: #fff;
+    padding: 10px;
+    top: 0;
+    right: 0;
+}
+.image-checkbox-checked .fa {
+    display: block !important;
+}
+
+.nopad .sections {
+    transition:all .5s ease-in-out;
+}
+
+.display {
+    opacity:0;
+}
+
+.modal {
+    top:30%;
+}
+
+/****************   Form End      ***************/

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name='description' content='IEEE Registration form' />
+    <link rel="stylesheet" href="css/hover-min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/jquery.selectBoxIt.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>IEEE - Registration Form</title>
+</head>
+
+<body>
+	<div class="container px-md-5">
+        <div class="form-main p-4 rounded mx-md-5">
+            <form method='POST' action='/submit'>
+                <fieldset>
+                    <legend class="text-center">IEEE - Registeration form</legend>
+                    <h6 class="mb-4 mt-4 position-relative">(<b style="color:red; top:4px;" class="position-relative">*</b>) For Required Fields</h6>
+                    <div class="form-group position-relative">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control text-input" id="name" aria-describedby="name" name="name" placeholder="Your Full name" required>
+                        <div class="effect"></div>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control text-input" id="email" aria-describedby="email" name="email" placeholder="Your Email" >
+                        <div class="effect"></div>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control text-input" id="phone" aria-describedby="phone" name="phone" placeholder="Your Phone Number"  required>
+                        <div class="effect"></div>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="university">University</label>
+                        <input type="text" class="form-control text-input" id="university" aria-describedby="university" name="university" placeholder="Your University"  required>
+                        <div class="effect"></div>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="faculty">Faculty</label>
+                        <input type="text" class="form-control text-input" id="faculty" aria-describedby="faculty" name="faculty" placeholder="Your Faculty"  required>
+                        <div class="effect"></div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Academic Year</h5>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="1"> <span>First</span>
+                        </label>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="2"> <span>Second</span>
+                        </label>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="3"> <span>Third</span>
+                        </label>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="4"> <span>Fourth</span>
+                        </label>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="5"> <span>Fifth</span>
+                        </label>
+                        <label class="d-block radio">
+                            <input type="radio" class="mr-1" name="academicyear" value="6"> <span>Sixth</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <h4 id="pref-works" aria-describedby="pref-work">Your Preferred Workshop</h4>
+                        <small id="pref-work" class="form-text text-muted mb-5 mt-n1 ml-2">Pick Your first Choice first then the Second one</small>
+                        <div class="row">
+                            <div class=" col-sm-6 col-md-3 nopad text-center opt">
+                                <label class="image-checkbox" data-toggle="tooltip" data-placement="top" title="<h5>Computer Directorate Workshop</h5>">
+                                    <img class="img-fluid rounded" src="images/it.png"/>
+<!--                                    <input type="checkbox" class="checkbox"/>-->
+                                    <i class="fa fa-check d-none"></i>
+                                </label>
+                                <div class="sections pl-4 display">
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h6>Web Development Workshop</h6>
+Create amazing websites using the newest technologies and frameworks that powers the internet!">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="web"> <span class="pl-0">Web</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h6>Android</h6>
+Create your own application that can be your startup business.">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="android"> <span class="pl-0">Android</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 nopad text-center opt" data-toggle="tooltip" data-placement="top" title="<h5>Power Directorate Workshops</h5>">
+                                <label class="image-checkbox" >
+                                    <img class="img-fluid rounded" src="images/power.png"/>
+<!--                                    <input type="checkbox" class="checkbox"/>-->
+                                    <i class="fa fa-check d-none"></i>
+                                </label>
+                                <div class="sections pl-4 display">
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>Power Distribution Workshop</h5>
+Get to know power & distribution systems with load estimation & 2D modelling">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="distribution"> <span class="pl-0">Power Distribution</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>PLC and classic control workshop</h5>
+Never came into your mind to design your own motor ?">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="plc"> <span class="pl-0">PLC and classic control</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class=" col-sm-6 col-md-3 nopad text-center opt" data-toggle="tooltip" data-placement="top" title="<h5>Electronics Directorate Workshops</h5>">
+                                <label class="image-checkbox">
+                                    <img class="img-fluid rounded" src="images/elec.jpg"/>
+<!--                                    <input type="checkbox" class="checkbox"/>-->
+                                    <i class="fa fa-check d-none"></i>
+                                </label>
+                                <div class="sections pl-4 display">
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>Logic Design Workshop</h5>">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="logic"> <span class="pl-0">Logic Design</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>VHDL</h5>">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="vhdl"> <span class="pl-0">VHDL</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>Cadence Workshop</h5>">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="cadence"> <span class="pl-0">Cadence</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class=" col-sm-6 col-md-3 nopad text-center opt" data-toggle="tooltip" data-placement="top" title="<h5>Embedded Directorate Workshops</h5>">
+                                <label class="image-checkbox">
+                                    <img class="img-fluid rounded" src="images/arduino.png"/>
+<!--                                    <input type="checkbox" class="checkbox"/>-->
+                                    <i class="fa fa-check d-none"></i>
+                                </label>
+                                <div class="sections pl-4 display">
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>Arduino Diploma Workshop</h5>
+This diploma is designed for giving a huge practical experience by using Arduino">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="arduino"> <span class="pl-0">Arduino Diploma</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                    <label class="d-block radio" data-toggle="tooltip" data-placement="right" title="<h5>Embedded System Workshop</h5>
+This diploma is designed for giving a great knowledge of embedded system field from A to Z">
+                                        <input class="inner-checkbox" type="checkbox" class="mr-1" name="workshop[]" value="embedded"> <span class="pl-0">Embedded System</span>
+                                        <div class="output text-center" style='color:#2C693A;'></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input class='first_choice' type='hidden' name='first_choice'/>
+                    <input class='second_choice' type='hidden' name='second_choice'/>
+
+                    <div class="text-center">
+                         <input type="submit" class="btn btn-success" value="Submit"/>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You can't select more than 2 Committees</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-n4 text-center p-2">
+        Designed and Coded by <strong>Muhammed Salah</strong> aka <strong>MiDo</strong>
+    </footer>
+	<script src='js/jquery-3.4.1.min.js'></script>
+    <script src='js/popper.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+<!--    <script src='js/jquery-ui.min.js'></script>-->
+<!--    <script src='js/jquery.selectBoxIt.min.js'></script>-->
+    <script src='js/script.js'></script>
+</body>
+   
+</html>
