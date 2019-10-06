@@ -16,19 +16,34 @@ app.use(bodyparser.json());
 app.use(express.urlencoded());
 app.use(express.json());
 
-var mysqlConnection = mysql.createConnection({
-  host:'localhost',
-  user: 'root',
-  password: '',
-  database: 'ieee'
-});
+var mysqlConnection;
 
-mysqlConnection.connect((err)=>{
-  if(!err)
-  console.log('DB Connection Succeded');
-  else
-  console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,2));
-});
+function handleDisconnect() {
+        mysqlConnection = mysql.createConnection({
+        host:'localhost',
+        user: 'root',
+        password: '',
+        database: 'ieee'
+    });
+
+    mysqlConnection.connect(function(err) {
+        if(err) {
+            console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,4));
+            setTimeout(handleDisconnect, 2000);
+        } else
+            console.log('DB Connection Succeded');
+    });
+    mysqlConnection.on('error', function(err) {
+        console.log('DB Failed \n Error: ' + JSON.stringify(err,undefined,4));
+        if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+handleDisconnect();
 
 client.authorize(function(err, tokens) {
   if(err) {
