@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-validator": "^6.2.0",
     "googleapis": "^39.2.0",
     "joi": "^14.3.1",
